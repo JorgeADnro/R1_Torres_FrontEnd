@@ -53,7 +53,7 @@ export class CrearProductoComponent implements OnInit {
 
     console.log(PRODUCTO);
     this._productoService.guardarProducto(PRODUCTO).subscribe(data => {
-      this.toastr.success('El producto fue registrado con exito!', 'Producto Registrado!');
+      this.toastr.success('El participante fue registrado con exito!', 'Participante Registrado!');
       this.router.navigate(['/']);
     }, error => {
       console.log(error);
@@ -84,14 +84,3 @@ export class CrearProductoComponent implements OnInit {
   }
 
 }
-/*
-  nombre: string;
-  apPaterno: string;
-  apMaterno: string;
-  edad: number;
-  genero: string;
-  correo: string;
-  telefono: string;
-  ciudad: string;
-  cargo: string;
-*/

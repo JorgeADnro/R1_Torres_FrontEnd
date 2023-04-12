@@ -1,4 +1,3 @@
-<!--
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
@@ -7,35 +6,75 @@
                     <span class="titulo"> {{ titulo | uppercase }}</span>
                     <form class="mt-3" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
                         <div class="mb-3">
-                            <input type="text" formControlName="producto" class="form-control form-control-lg"
-                                placeholder="Producto">
+                            <input type="text" formControlName="nombre" class="form-control form-control-lg"
+                                placeholder="Nombre">
                             <div class="text-danger"
-                                *ngIf="productoForm.get('producto')?.hasError('required') && productoForm.get('producto')?.touched">
-                                <span>El nombre del producto <strong>es obligatorio</strong></span>
+                                *ngIf="productoForm.get('nombre')?.hasError('required') && productoForm.get('nombre')?.touched">
+                                <span>El nombre del participante <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="categoria" class="form-control form-control-lg"
-                                placeholder="Categoria">
+                            <input type="text" formControlName="apPaterno" class="form-control form-control-lg"
+                                placeholder="Apellido Paterno">
                             <div class="text-danger"
-                                *ngIf="productoForm.get('categoria')?.hasError('required') && productoForm.get('categoria')?.touched">
-                                <span>La categoria <strong>es obligatoria</strong></span>
+                                *ngIf="productoForm.get('apPaterno')?.hasError('required') && productoForm.get('apPaterno')?.touched">
+                                <span>El apellido del participante <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="ubicacion" class="form-control form-control-lg"
-                                placeholder="Ubicacion">
+                            <input type="text" formControlName="apMaterno" class="form-control form-control-lg"
+                                placeholder="Apellido Materno">
                             <div class="text-danger"
-                                *ngIf="productoForm.get('ubicacion')?.hasError('required') && productoForm.get('ubicacion')?.touched">
-                                <span>La ubicacion <strong>es obligatoria</strong></span>
+                                *ngIf="productoForm.get('apMaterno')?.hasError('required') && productoForm.get('apMaterno')?.touched">
+                                <span>El apellido del participante <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="number" formControlName="precio" class="form-control form-control-lg"
-                                placeholder="Precio">
+                            <input type="number" formControlName="edad" class="form-control form-control-lg"
+                                placeholder="Edad">
                             <div class="text-danger"
-                                *ngIf="productoForm.get('precio')?.hasError('required') && productoForm.get('precio')?.touched">
-                                <span>El precio <strong>es obligatorio</strong></span>
+                                *ngIf="productoForm.get('edad')?.hasError('required') && productoForm.get('edad')?.touched">
+                                <span> La edad <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="genero" class="form-control form-control-lg"
+                                placeholder="Género">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('genero')?.hasError('required') && productoForm.get('genero')?.touched">
+                                <span>El genero <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="correo" class="form-control form-control-lg"
+                                placeholder="Correo">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('correo')?.hasError('required') && productoForm.get('correo')?.touched">
+                                <span>El correo <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="telefono" class="form-control form-control-lg"
+                                placeholder="Teléfono">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('telefono')?.hasError('required') && productoForm.get('telefono')?.touched">
+                                <span>El teléfono <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="ciudad" class="form-control form-control-lg"
+                                placeholder="Ciudad">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('ciudad')?.hasError('required') && productoForm.get('ciudad')?.touched">
+                                <span>La ciudad <strong>es obligatoria</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="cargo" class="form-control form-control-lg"
+                                placeholder="Cargo">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('cargo')?.hasError('required') && productoForm.get('cargo')?.touched">
+                                <span>El cargo <strong>es obligatorio</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -47,70 +86,5 @@
             </div>
         </div>
     </div>
-</div>-->
+</div>
 
-<form>
-    <div class="form-row">
-      <div class="col-md-4 mb-3">
-        <label for="validationServer01">First name</label>
-        <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationServer02">Last name</label>
-        <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="validationServerUsername">Username</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupPrepend3">@</span>
-          </div>
-          <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
-          <div class="invalid-feedback">
-            Please choose a username.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="col-md-6 mb-3">
-        <label for="validationServer03">City</label>
-        <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
-        <div class="invalid-feedback">
-          Please provide a valid city.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationServer04">State</label>
-        <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
-        <div class="invalid-feedback">
-          Please provide a valid state.
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="validationServer05">Zip</label>
-        <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
-        <label class="form-check-label" for="invalidCheck3">
-          Agree to terms and conditions
-        </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
-        </div>
-      </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </form>
