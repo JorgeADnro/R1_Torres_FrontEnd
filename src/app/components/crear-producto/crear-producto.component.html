@@ -39,12 +39,23 @@
                         </div>
                         <div class="mb-3">
                             <select class="form-select form-select-lg mb-3" formControlName="genero" aria-label="Default select example" aria-placeholder="Género">
+                                <option class="form-select" value="" disabled selected hidden>Género</option>
                                 <option value="H">Hombre</option>
                                 <option value="M">Mujer</option>
                             </select>
                             <div class="text-danger"
                                 *ngIf="productoForm.get('genero')?.hasError('required') && productoForm.get('genero')?.touched">
                                 <span>El genero <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select form-select-lg mb-3" formControlName="areaInt" aria-label="Default select example" aria-placeholder="Género">
+                                <option class="form-select" value="" disabled selected hidden>Area de interéz</option>
+                                <option *ngFor="let evento of listEventos">{{ evento.nombre }}</option>
+                            </select>
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('areaInt')?.hasError('required') && productoForm.get('areaInt')?.touched">
+                                <span>El area <strong>es obligatoria</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -64,16 +75,22 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="ciudad" class="form-control form-control-lg"
-                                placeholder="Ciudad">
+                            <select class="form-select form-select-lg mb-3" formControlName="ciudad" aria-label="Default select example" aria-placeholder="Ciudad">
+                                <option class="form-select" value="" disabled selected hidden>Ciudad</option>
+                                <option value="Dolores Hidalgo">Dolores Hidalgo</option>
+                                <option value="Monterrey"> Monterrey</option>
+                                <option value="CDMX">CDMX</option>
+                            </select>
                             <div class="text-danger"
                                 *ngIf="productoForm.get('ciudad')?.hasError('required') && productoForm.get('ciudad')?.touched">
-                                <span>La ciudad <strong>es obligatoria</strong></span>
+                                <span> La ciudad <strong>es obligatoria</strong></span>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <input type="text" formControlName="cargo" class="form-control form-control-lg"
-                                placeholder="Cargo">
+                            <select class="form-select form-select-lg mb-3" formControlName="cargo" aria-label="Default select example" aria-placeholder="Género">
+                                <option class="form-select" value="" disabled selected hidden>Cargo</option>
+                                <option *ngFor="let cargo of listCargos">{{ cargo.cargo }}</option>
+                            </select>
                             <div class="text-danger"
                                 *ngIf="productoForm.get('cargo')?.hasError('required') && productoForm.get('cargo')?.touched">
                                 <span>El cargo <strong>es obligatorio</strong></span>

@@ -19,7 +19,7 @@
                           <tr *ngFor="let evento of listEventos">
                             <td>{{ evento.nombre }}</td>
                             <td>{{ evento.descripcion }}</td>
-                            <td>{{ evento.fecha }}</td>
+                            <td>{{ evento.fecha |date:"d-MM-YYYY"}}</td>
                             <td>{{ evento.cupo }}</td>
                             <td>
                                 <i (click)="eliminarProducto(evento._id)" class="fas fa-trash text-danger"></i>
@@ -33,3 +33,4 @@
         </div>
     </div>
 </div>
+

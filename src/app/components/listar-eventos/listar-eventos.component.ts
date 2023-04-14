@@ -16,17 +16,18 @@ export class ListarEventosComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProductos();
+    this.obtenerProductos();
   }
 
 
-  obtenerProductos() {
-    this._eventoService.getEventos().subscribe(data => {
-      console.log(data);
-      this.listEventos = data;
-    }, error => {
-      console.log(error);
-    })
-  }
+    obtenerProductos() {
+      this._eventoService.getEventos().subscribe(data => {
+        console.log(data);
+        this.listEventos = data;
+      }, error => {
+        console.log(error);
+      })
+    }
 
   eliminarProducto(id: any) {
     this._eventoService.eliminarEvento(id).subscribe(data => {

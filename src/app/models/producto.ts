@@ -10,10 +10,10 @@ export class Producto {
     ciudad: string;
     cargo: string;
     fecha: Date;
-    areaInt: [];
+    areaInt: string[];
 
     constructor(nombre: string, apPaterno: string, apMaterno: string, edad: number,genero: string,correo: string,
-        telefono: string,ciudad: string,cargo: string,fecha: Date,areaInt:[]){
+        telefono: string,ciudad: string,cargo: string,fecha: Date,areaInt:string[]){
         this.nombre = nombre;
         this.apPaterno = apPaterno;
         this.apMaterno = apMaterno;
