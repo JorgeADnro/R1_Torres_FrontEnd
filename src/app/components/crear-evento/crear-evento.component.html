@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo"> {{ titulo | uppercase }}</span>
+                    <form class="mt-3" [formGroup]="eventoForm" (ngSubmit)="agregarEvento()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre" class="form-control form-control-lg"
+                                placeholder="Nombre">
+                            <div class="text-danger"
+                                *ngIf="eventoForm.get('nombre')?.hasError('required') && eventoForm.get('nombre')?.touched">
+                                <span>El nombre del evento <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="descripcion" class="form-control form-control-lg"
+                                placeholder="Descripción">
+                            <div class="text-danger"
+                                *ngIf="eventoForm.get('descripcion')?.hasError('required') && eventoForm.get('descripcion')?.touched">
+                                <span>La descripción del evento <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="Number" formControlName="cupo" class="form-control form-control-lg"
+                                placeholder="Cupo">
+                            <div class="text-danger"
+                                *ngIf="eventoForm.get('cupo')?.hasError('required') && eventoForm.get('cupo')?.touched">
+                                <span>El cupo del evento <strong>es obligatorio</strong></span>
+                            </div>
+                            
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                         <!--   <button type="submit" [disabled]="productoForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>-->
+                            <button type="submit" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

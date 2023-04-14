@@ -12,7 +12,7 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class CrearProductoComponent implements OnInit {
   productoForm: FormGroup;
-  titulo = 'Crear producto';
+  titulo = 'Agregar datos';
   id: string | null;
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -29,6 +29,7 @@ export class CrearProductoComponent implements OnInit {
       telefono: ['', Validators.required],
       ciudad: ['', Validators.required],
       cargo: ['', Validators.required],
+      areaInt: ['', Validators.required],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -49,6 +50,8 @@ export class CrearProductoComponent implements OnInit {
       telefono: this.productoForm.get('telefono')?.value,
       ciudad: this.productoForm.get('ciudad')?.value,
       cargo: this.productoForm.get('cargo')?.value,
+      fecha: this.productoForm.get('fecha')?.value,
+      areaInt: this.productoForm.get('areaInt')?.value,
     }
 
     console.log(PRODUCTO);
@@ -78,6 +81,7 @@ export class CrearProductoComponent implements OnInit {
           telefono: data.telefono,
           ciudad: data.ciudad,
           cargo: data.cargo,
+          areaInt: data.areaInt
         })
       })
     }

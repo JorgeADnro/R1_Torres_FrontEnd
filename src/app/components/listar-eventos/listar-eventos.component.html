@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">LISTADO DE EVENTOS</span>
+                    <button class="btn btn-success float-end" routerLink="/añadir-evento">NUEVO</button>
+                    <table *ngIf="listEventos.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Cupo</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let evento of listEventos">
+                            <td>{{ evento.nombre }}</td>
+                            <td>{{ evento.descripcion }}</td>
+                            <td>{{ evento.fecha }}</td>
+                            <td>{{ evento.cupo }}</td>
+                            <td>
+                                <i (click)="eliminarProducto(evento._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listEventos.length == 0">No hay productos para mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
