@@ -53,7 +53,5 @@ export class CrearEventoComponent implements OnInit {
       this.eventoForm.reset();
     })
 
-  
   }
-
 }

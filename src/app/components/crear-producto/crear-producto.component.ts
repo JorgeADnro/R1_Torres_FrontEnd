@@ -55,6 +55,7 @@ export class CrearProductoComponent implements OnInit {
   }
 
   agregarProducto() {
+    
 
     const PRODUCTO: Producto = {
       nombre: this.productoForm.get('nombre')?.value,
@@ -69,7 +70,6 @@ export class CrearProductoComponent implements OnInit {
       fecha: this.productoForm.get('fecha')?.value,
       areaInt: this.productoForm.get('areaInt')?.value,
     }
-
     console.log(PRODUCTO);
     this._productoService.guardarProducto(PRODUCTO).subscribe(data => {
       this.toastr.success('El participante fue registrado con exito!', 'Participante Registrado!');
