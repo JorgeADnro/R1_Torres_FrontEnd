@@ -8,11 +8,21 @@ import { Producto } from '../models/producto';
 })
 export class ProductoService {
   url = 'http://localhost:4000/api/productos/';
+  urlH = 'http://localhost:4000/api/productos/genero/H';
+  urlM = 'http://localhost:4000/api/productos/genero/M';
 
   constructor(private http: HttpClient) { }
 
   getProductos(): Observable<any> {
     return this.http.get(this.url);
+  }
+
+  getProductosH(): Observable<any> {
+    return this.http.get(this.urlH);
+  }
+
+  getProductosM(): Observable<any> {
+    return this.http.get(this.urlM);
   }
 
   eliminarProducto(id: string): Observable<any> {
@@ -25,5 +35,9 @@ export class ProductoService {
 
   obtenerProducto(id: string): Observable<any> {
     return this.http.get(this.url + id);
+  }
+
+  obtenerProductosPorArea(area: string) {
+    return this.http.get(`${this.url}/productos/area/${area}`);
   }
 }

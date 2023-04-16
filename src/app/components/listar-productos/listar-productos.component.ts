@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/evento';
 import { Producto } from 'src/app/models/producto';
 import { EventoService } from 'src/app/services/evento.service';
-import { GeneroService } from 'src/app/services/genero.service';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
@@ -13,22 +12,23 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class ListarProductosComponent implements OnInit {
   listProductos: Producto[] = [];
-  listUsuarios: Producto[] = [];
-  listUsuarios2: Producto[] = [];
+  listProductosH: Producto[] = [];
+  listProductosM: Producto[] = [];
   listEventos: Evento[] = [];
+  showTable1: boolean = true;
+  showTable2: boolean = false;
+  showTable3: boolean = false;
+
   
   constructor(private _productoService: ProductoService,
         private toastr: ToastrService,
-        private _eventoService: EventoService,
-        private _generoService: GeneroService) { }
+        private _eventoService: EventoService) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
     this.obtenerEventos();
-    const generoM = 'Masculino'; // Aquí puedes establecer el valor del género a buscar
-    const generoF = 'Femenino'; // Aquí puedes establecer el valor del género a buscar
-    this.obtenerGenero(generoM);
-    this.obtenerGeneroF(generoF);
+    this.obtenerProductosH();
+    this.obtenerProductosM();
   }
 
 
@@ -41,13 +41,33 @@ export class ListarProductosComponent implements OnInit {
     })
   }
 
+  obtenerProductosH() {
+    this._productoService.getProductosH().subscribe(data => {
+      console.log(data);
+      this.listProductosH = data;
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  obtenerProductosM() {
+    this._productoService.getProductosM().subscribe(data => {
+      console.log(data);
+      this.listProductosM = data;
+    }, error => {
+      console.log(error);
+    })
+  }
+
   eliminarProducto(id: any) {
+    if (confirm('¿Está seguro de que desea eliminar este producto?')){
     this._productoService.eliminarProducto(id).subscribe(data => {
       this.toastr.error('El producto fue eliminado con exito' ,'Producto Eliminado');
       this.obtenerProductos();
     }, error => {
       console.log(error);
     })
+  }
   }
 
   obtenerEventos() {
@@ -59,24 +79,23 @@ export class ListarProductosComponent implements OnInit {
     })
   }
 
-  obtenerGenero(genero: string): void {
-    console.log('Género a buscar:', genero);
-    this._generoService.getGenero(genero).subscribe(data => {
-      console.log('Usuarios encontrados:', data);
-      this.listUsuarios = data;
-    }, error => {
-      console.log('Error al obtener usuarios:', error);
-    }) 
-  }
-
-  obtenerGeneroF(genero: string): void {
-    console.log('Género a buscar:', genero);
-    this._generoService.getGeneroF(genero).subscribe(data => {
-      console.log('Usuarios encontrados:', data);
-      this.listUsuarios2 = data;
-    }, error => {
-      console.log('Error al obtener usuarios:', error);
-    }) 
-  }
-
+  showTable(table: string) {
+    switch (table) {
+      case 'table1':
+        this.showTable1 = true;
+        this.showTable2 = false;
+        this.showTable3 = false;
+        break;
+      case 'table2':
+        this.showTable1 = false;
+        this.showTable2 = true;
+        this.showTable3 = false;
+      break;
+        case 'table3':
+        this.showTable1 = false;
+        this.showTable2 = false;
+        this.showTable3 = true;
+        break;
+      }
+    }
 }

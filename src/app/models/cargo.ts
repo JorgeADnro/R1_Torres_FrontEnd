@@ -1,8 +1,8 @@
 export class Cargo {
     _id?: number;
-    nombre: [];
+    cargo: [];
 
     constructor(nombre: []){
-        this.nombre = nombre;;
+        this.cargo = nombre;;
     }
 }

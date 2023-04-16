@@ -1,4 +1,7 @@
 export class Producto {
+    static filter(arg0: (Producto: { genero: string; }) => boolean) {
+      throw new Error('Method not implemented.');
+    }
     _id?: number;
     nombre: string;
     apPaterno: string;

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/evento';
 import { EventoService } from 'src/app/services/evento.service';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-crear-evento',
@@ -14,6 +15,8 @@ export class CrearEventoComponent implements OnInit {
   eventoForm: FormGroup;
   titulo = 'Agregar datos';
   id: string | null;
+  
+
   constructor(private fb: FormBuilder,
               private router: Router,
               private toastr: ToastrService,
@@ -66,5 +69,9 @@ export class CrearEventoComponent implements OnInit {
       })
     }
   }
+
+
+  
+  
 
 }

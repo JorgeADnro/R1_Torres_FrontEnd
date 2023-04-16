@@ -10,7 +10,7 @@ import { ListarProductosComponent } from './components/listar-productos/listar-p
 
 
 const routes: Routes = [
-  { path: 'ver-participantes', component: ListarProductosComponent },
+  { path: '', component: ListarProductosComponent },
   { path: 'ver-eventos', component: ListarEventosComponent },
   { path: 'añadir-participante', component: CrearProductoComponent },
   { path: 'editar-participante/:id', component: CrearProductoComponent },

@@ -9,8 +9,8 @@ import { catchError,tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GeneroService {
-  url = 'http://localhost:4000/api/productos/';
-  url2 = 'http://localhost:4000/api/productos/f';
+  url = 'http://localhost:4000/api/productos/genero/H';
+  url2 = 'http://localhost:4000/api/productos/genero/M';
   
   constructor(private http: HttpClient) { }
 

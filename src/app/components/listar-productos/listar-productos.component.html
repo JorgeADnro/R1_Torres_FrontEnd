@@ -1,62 +1,111 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-          <div class="card">
-              <div class="card-body text-center">
-                  <span class="titulo">LISTADO DE PARTICIPANTES MASCULINOS</span>
-                  <button class="btn btn-success float-end" routerLink="/añadir-participante">NUEVO</button>
-                  <table *ngIf="listProductos.length > 0" class="table table-striped mt-3">
-                      <thead>
-                        <tr>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Edad</th>
-                          <th scope="col">Genero</th>
-                          <th scope="col">Area de interéz</th>
-                          <th scope="col">Correo</th>
-                          <th scope="col">Teléfono</th>
-                          <th scope="col">Ciudad</th>
-                          <th scope="col">Cargo</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let producto of listProductos">
-                          <td>{{ producto.nombre }} {{ producto.apPaterno }} {{ producto.apMaterno }}</td>
-                          <td>{{ producto.edad }}</td>
-                          <td>{{ producto.genero }}</td>
-                          <td>{{ producto.areaInt }}</td>
-                          <td>{{ producto.correo }}</td>
-                          <td>{{ producto.telefono }}</td>
-                          <td>{{ producto.ciudad }}</td>
-                          <td>{{ producto.cargo }}</td>
-                          <td>
-                              <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <h5 style="text-align: start; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
-              </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-secondary" (click)="showTable('table1')">PARTICIPANTES</button>
+            <button type="button" class="btn btn-secondary" (click)="showTable('table2')">PARTICIPANTES HOMBRES</button>
+            <button type="button" class="btn btn-secondary" (click)="showTable('table3')">PARTICIPANTES MUJERES</button>
           </div>
+          <button class="btn btn-success float-end" routerLink="/añadir-participante">NUEVO</button>
+        </div>
+        <div class="card-body">
+          <span class="titulo" *ngIf="showTable1">LISTADO DE PARTICIPANTES</span>
+          <table *ngIf="listProductos.length > 0 && showTable1" class="table table-striped mt-3" >
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Area de interéz</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Cargo</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of listProductos">
+                <td>{{ producto.nombre }} {{ producto.apPaterno }} {{ producto.apMaterno }}</td>
+                <td>{{ producto.edad }}</td>
+                <td>{{ producto.genero }}</td>
+                <td>{{ producto.areaInt }}</td>
+                <td>{{ producto.correo }}</td>
+                <td>{{ producto.telefono }}</td>
+                <td>{{ producto.ciudad }}</td>
+                <td>{{ producto.cargo }}</td>
+                <td>
+                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <span class="titulo" *ngIf="showTable2">LISTADO DE PARTICIPANTES MASCULINOS</span>
+          <table *ngIf="listProductos.length > 0 && showTable2" class="table table-striped mt-3" >
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Area de interéz</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Cargo</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of listProductosH">
+                <td>{{ producto.nombre }} {{ producto.apPaterno }} {{ producto.apMaterno }}</td>
+                <td>{{ producto.edad }}</td>
+                <td>{{ producto.genero }}</td>
+                <td>{{ producto.areaInt }}</td>
+                <td>{{ producto.correo }}</td>
+                <td>{{ producto.telefono }}</td>
+                <td>{{ producto.ciudad }}</td>
+                <td>{{ producto.cargo }}</td>
+                <td>
+                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <span class="titulo" *ngIf="showTable3">LISTADO DE PARTICIPANTES FEMENINOS</span>
+          <table *ngIf="listProductos.length > 0 && showTable3" class="table table-striped mt-3" >
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Area de interéz</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Cargo</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of listProductosM">
+                <td>{{ producto.nombre }} {{ producto.apPaterno }} {{ producto.apMaterno }}</td>
+                <td>{{ producto.edad }}</td>
+                <td>{{ producto.genero }}</td>
+                <td>{{ producto.areaInt }}</td>
+                <td>{{ producto.correo }}</td>
+                <td>{{ producto.telefono }}</td>
+                <td>{{ producto.ciudad }}</td>
+                <td>{{ producto.cargo }}</td>
+                <td>
+                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
   </div>
 </div>
-
-<table class="table table-bordered border-dark text-center" *ngIf="listUsuarios.length > 0">
-  <thead>
-    <tr>
-      <th
-        style="font-size: 18px; background: #cfcfc4; font-weight: bold;font-family: 'Montserrat', sans-serif;"
-        scope="col">NOMBRE USUARIO</th>
-      <th
-        style="font-size: 18px; background: #cfcfc4; font-weight: bold;font-family: 'Montserrat', sans-serif;"
-        scope="col">GÉNERO</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="font-size: 16px;font-family: 'Montserrat', sans-serif;" *ngFor="let usr2 of listUsuarios2">
-      <th>{{usr2.apPaterno +" "+ usr2.apMaterno +" "+ usr2.nombre}}</th>
-      <th>{{usr2.genero}}</th>
-    </tr>
-  </tbody>
-</table>
