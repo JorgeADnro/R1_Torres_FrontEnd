@@ -31,17 +31,18 @@ export class CrearEventoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.esEditar();
+    
   }
 
   agregarEvento() {
 
-    const EVENTO: Evento = {
-      nombre: this.eventoForm.get('nombre')?.value,
-      descripcion: this.eventoForm.get('descripcion')?.value,
-      fecha: this.eventoForm.get('fecha')?.value,
-      cupo: this.eventoForm.get('cupo')?.value,
-    }
+    const EVENTO = new Evento(
+      this.eventoForm.get('nombre')?.value,
+      this.eventoForm.get('descripcion')?.value,
+      this.eventoForm.get('fecha')?.value,
+      this.eventoForm.get('cupo')?.value
+    );
+    
 
     console.log(EVENTO);
     this._eventoService.guardarEvento(EVENTO).subscribe(data => {
@@ -54,24 +55,5 @@ export class CrearEventoComponent implements OnInit {
 
   
   }
-
-  esEditar() {
-
-    if(this.id !== null) {
-      this.titulo = 'Editar evento';
-      this._eventoService.obtenerEvento(this.id).subscribe(data => {
-        this.eventoForm.setValue({
-          nombre: data.nombre,
-          descripcion: data.descripcion,
-          fecha: data.fecha,
-          cupo: data.cupo,
-        })
-      })
-    }
-  }
-
-
-  
-  
 
 }

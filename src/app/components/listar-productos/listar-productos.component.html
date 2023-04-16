@@ -3,23 +3,26 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="btn-group" role="group">
-            <div class="form-group">
-              
-            </div>
-            <button type="button" class="btn btn-secondary" (click)="showTable('table1')">PARTICIPANTES</button>
-            <button type="button" class="btn btn-secondary" (click)="showTable('table2')">PARTICIPANTES HOMBRES</button>
-            <button type="button" class="btn btn-secondary" (click)="showTable('table3')">PARTICIPANTES MUJERES</button>
-          </div>
-          <button class="btn btn-success float-end" routerLink="/añadir-participante">NUEVO</button>
-        </div>
-        <div class="card-body">
-          <span class="titulo" *ngIf="showTable1">LISTADO DE PARTICIPANTES</span>
-              <select *ngIf="showTable1" class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltro()">
+          <div class="row">
+            <div class="col-md-6">
+              <select class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltro()">
                 <option value="" selected>Todas las áreas</option>
                 <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
               </select>
-          <table *ngIf="listProductos.length > 0 && showTable1" class="table table-striped mt-3" >
+            </div>
+            <div class="col-md-6">
+              <select class="form-control" id="filtro-genero" [(ngModel)]="filtroGenero" (change)="aplicarFiltroAG()">
+                <option value="" selected>Todos los géneros</option>
+                <option value="H">Masculino</option>
+                <option value="M">Femenino</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="titulo" >LISTADO DE PARTICIPANTES</span>
+          <button class="btn btn-success float-end" routerLink="/añadir-participante">NUEVO</button>
+          <table *ngIf="listProductos.length > 0" class="table table-striped mt-3" >
             <thead>
               <tr>
                 <th scope="col">Nombre</th>
@@ -44,81 +47,11 @@
                 <td>{{ producto.ciudad }}</td>
                 <td>{{ producto.cargo }}</td>
                 <td>
-                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <span class="titulo" *ngIf="showTable2">LISTADO DE PARTICIPANTES MASCULINOS</span>
-          <select *ngIf="showTable2" class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltroH()">
-            <option value="" selected>Todas las áreas</option>
-            <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
-          </select>
-          <table *ngIf="listProductos.length > 0 && showTable2" class="table table-striped mt-3" >
-            <thead>
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Genero</th>
-                <th scope="col">Area de interéz</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Teléfono</th>
-                <th scope="col">Ciudad</th>
-                <th scope="col">Cargo</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let producto of listProductosH">
-                <td>{{ producto.nombre }} {{ producto.apPaterno }} {{ producto.apMaterno }}</td>
-                <td>{{ producto.edad }}</td>
-                <td>{{ producto.genero }}</td>
-                <td>{{ producto.areaInt }}</td>
-                <td>{{ producto.correo }}</td>
-                <td>{{ producto.telefono }}</td>
-                <td>{{ producto.ciudad }}</td>
-                <td>{{ producto.cargo }}</td>
-                <td>
-                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <span class="titulo" *ngIf="showTable3">LISTADO DE PARTICIPANTES FEMENINOS</span>
-          <select *ngIf="showTable3" class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltroM()">
-            <option value="" selected>Todas las áreas</option>
-            <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
-          </select>
-          <table *ngIf="listProductos.length > 0 && showTable3" class="table table-striped mt-3" >
-            <thead>
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Genero</th>
-                <th scope="col">Area de interéz</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Teléfono</th>
-                <th scope="col">Ciudad</th>
-                <th scope="col">Cargo</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let producto of listProductosM">
-                <td>{{ producto.nombre }} {{ producto.apPaterno }} {{ producto.apMaterno }}</td>
-                <td>{{ producto.edad }}</td>
-                <td>{{ producto.genero }}</td>
-                <td>{{ producto.areaInt }}</td>
-                <td>{{ producto.correo }}</td>
-                <td>{{ producto.telefono }}</td>
-                <td>{{ producto.ciudad }}</td>
-                <td>{{ producto.cargo }}</td>
-                <td>
-                    <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <i (click)="eliminarProducto(producto._id)" class="fas fa-trash text-danger"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         </div>
       </div>
     </div>

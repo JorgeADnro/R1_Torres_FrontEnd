@@ -15,11 +15,9 @@ export class ListarProductosComponent implements OnInit {
   listProductosH: Producto[] = [];
   listProductosM: Producto[] = [];
   listEventos: Evento[] = [];
-  showTable1: boolean = true;
-  showTable2: boolean = false;
-  showTable3: boolean = false;
   areasInt: string[] = [];
   filtroArea: string = '';
+  filtroGenero: string = '';
   areaIntSeleccionada: string = '';
   generoSeleccionado: string = '';
   
@@ -81,26 +79,6 @@ export class ListarProductosComponent implements OnInit {
       console.log(error);
     })
   }
-
-  showTable(table: string) {
-    switch (table) {
-      case 'table1':
-        this.showTable1 = true;
-        this.showTable2 = false;
-        this.showTable3 = false;
-        break;
-      case 'table2':
-        this.showTable1 = false;
-        this.showTable2 = true;
-        this.showTable3 = false;
-      break;
-        case 'table3':
-        this.showTable1 = false;
-        this.showTable2 = false;
-        this.showTable3 = true;
-        break;
-      }
-    }
   
     aplicarFiltro(): void {
       if (this.filtroArea !== '') {
@@ -111,23 +89,25 @@ export class ListarProductosComponent implements OnInit {
         this.obtenerProductos();
       }
     }
-    aplicarFiltroH(): void {
-      if (this.filtroArea !== '') {
-        this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
-          this.listProductosH = productos;
-        });
-      } else {
-        this.obtenerProductos();
-      }
+
+
+  aplicarFiltroAG(): void {
+    if (this.filtroArea !== '' && this.filtroGenero !== '') {
+      this._productoService.getProductosByAreaYGenero(this.filtroArea, this.filtroGenero).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else if (this.filtroArea !== '') {
+      this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else if (this.filtroGenero !== '') {
+      this._productoService.getProductosByGenero(this.filtroGenero).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else {
+      this.obtenerProductos();
     }
-    aplicarFiltroM(): void {
-      if (this.filtroArea !== '') {
-        this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
-          this.listProductosM = productos;
-        });
-      } else {
-        this.obtenerProductos();
-      }
-    }
+  }
+
     
 }

@@ -41,4 +41,12 @@ export class ProductoService {
     return this.http.get<Producto[]>(`${this.url}/areaInt/${areaInt}`);
   }
 
+  getProductosByGenero(genero: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.url}/genero/${genero}`);
+  }  
+
+  getProductosByAreaYGenero(areaInt: string, genero: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.url}/areaInt/${areaInt}/genero/${genero}`);
+  }
+
 }
