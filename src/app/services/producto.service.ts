@@ -37,7 +37,8 @@ export class ProductoService {
     return this.http.get(this.url + id);
   }
 
-  obtenerProductosPorArea(area: string) {
-    return this.http.get(`${this.url}/productos/area/${area}`);
+  getProductosByArea(areaInt: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.url}/areaInt/${areaInt}`);
   }
+
 }

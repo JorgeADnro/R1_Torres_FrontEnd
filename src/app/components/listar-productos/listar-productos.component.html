@@ -4,6 +4,9 @@
       <div class="card">
         <div class="card-header">
           <div class="btn-group" role="group">
+            <div class="form-group">
+              
+            </div>
             <button type="button" class="btn btn-secondary" (click)="showTable('table1')">PARTICIPANTES</button>
             <button type="button" class="btn btn-secondary" (click)="showTable('table2')">PARTICIPANTES HOMBRES</button>
             <button type="button" class="btn btn-secondary" (click)="showTable('table3')">PARTICIPANTES MUJERES</button>
@@ -12,6 +15,10 @@
         </div>
         <div class="card-body">
           <span class="titulo" *ngIf="showTable1">LISTADO DE PARTICIPANTES</span>
+              <select *ngIf="showTable1" class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltro()">
+                <option value="" selected>Todas las áreas</option>
+                <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
+              </select>
           <table *ngIf="listProductos.length > 0 && showTable1" class="table table-striped mt-3" >
             <thead>
               <tr>
@@ -43,6 +50,10 @@
             </tbody>
           </table>
           <span class="titulo" *ngIf="showTable2">LISTADO DE PARTICIPANTES MASCULINOS</span>
+          <select *ngIf="showTable2" class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltroH()">
+            <option value="" selected>Todas las áreas</option>
+            <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
+          </select>
           <table *ngIf="listProductos.length > 0 && showTable2" class="table table-striped mt-3" >
             <thead>
               <tr>
@@ -74,6 +85,10 @@
             </tbody>
           </table>
           <span class="titulo" *ngIf="showTable3">LISTADO DE PARTICIPANTES FEMENINOS</span>
+          <select *ngIf="showTable3" class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltroM()">
+            <option value="" selected>Todas las áreas</option>
+            <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
+          </select>
           <table *ngIf="listProductos.length > 0 && showTable3" class="table table-striped mt-3" >
             <thead>
               <tr>

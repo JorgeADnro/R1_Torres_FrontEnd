@@ -18,7 +18,10 @@ export class ListarProductosComponent implements OnInit {
   showTable1: boolean = true;
   showTable2: boolean = false;
   showTable3: boolean = false;
-
+  areasInt: string[] = [];
+  filtroArea: string = '';
+  areaIntSeleccionada: string = '';
+  generoSeleccionado: string = '';
   
   constructor(private _productoService: ProductoService,
         private toastr: ToastrService,
@@ -98,4 +101,33 @@ export class ListarProductosComponent implements OnInit {
         break;
       }
     }
+  
+    aplicarFiltro(): void {
+      if (this.filtroArea !== '') {
+        this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+          this.listProductos = productos;
+        });
+      } else {
+        this.obtenerProductos();
+      }
+    }
+    aplicarFiltroH(): void {
+      if (this.filtroArea !== '') {
+        this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+          this.listProductosH = productos;
+        });
+      } else {
+        this.obtenerProductos();
+      }
+    }
+    aplicarFiltroM(): void {
+      if (this.filtroArea !== '') {
+        this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+          this.listProductosM = productos;
+        });
+      } else {
+        this.obtenerProductos();
+      }
+    }
+    
 }
