@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Evento } from 'src/app/models/evento';
 import { Producto } from 'src/app/models/producto';
@@ -18,12 +19,23 @@ export class ListarProductosComponent implements OnInit {
   areasInt: string[] = [];
   filtroArea: string = '';
   filtroGenero: string = '';
+  filtroFecha: string = '';
   areaIntSeleccionada: string = '';
   generoSeleccionado: string = '';
+  eventoSeleccionado: string = '';
+  fechaRegistro: Date= new Date;
+
+
+
+
+
   
   constructor(private _productoService: ProductoService,
         private toastr: ToastrService,
-        private _eventoService: EventoService) { }
+        private _eventoService: EventoService
+        ) {
+
+         }
 
   ngOnInit(): void {
     this.obtenerProductos();
@@ -109,5 +121,33 @@ export class ListarProductosComponent implements OnInit {
     }
   }
 
-    
+  aplicarFiltroAF(): void {
+    if (this.filtroArea !== '' && this.filtroFecha !== '') {
+      this._productoService.getProductosByAreaYFecha(this.filtroArea, this.filtroFecha).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else if (this.filtroArea !== '') {
+      this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else if (this.filtroFecha !== '') {
+      this._productoService.getProductosByFecha(this.filtroFecha).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else {
+      this.obtenerProductos();
+    }
+  }
+
+  aplicarFiltroFecha(): void {
+    if (this.filtroFecha !== '') {
+      this._productoService.getProductosByFecha(this.filtroFecha).subscribe((productos: Producto[]) => {
+        this.listProductos = productos;
+      });
+    } else {
+      this.obtenerProductos();
+    }
+  }
+  
+
 }

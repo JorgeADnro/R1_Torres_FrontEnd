@@ -39,7 +39,7 @@ export class CrearEventoComponent implements OnInit {
     const EVENTO = new Evento(
       this.eventoForm.get('nombre')?.value,
       this.eventoForm.get('descripcion')?.value,
-      this.eventoForm.get('fecha')?.value,
+      this.eventoForm.get('fechaCreacion')?.value,
       this.eventoForm.get('cupo')?.value
     );
     

@@ -67,7 +67,7 @@ export class CrearProductoComponent implements OnInit {
       telefono: this.productoForm.get('telefono')?.value,
       ciudad: this.productoForm.get('ciudad')?.value,
       cargo: this.productoForm.get('cargo')?.value,
-      fecha: this.productoForm.get('fecha')?.value,
+      fechaCreacion: this.productoForm.get('fechaCreacion')?.value,
       areaInt: this.productoForm.get('areaInt')?.value,
     }
     console.log(PRODUCTO);

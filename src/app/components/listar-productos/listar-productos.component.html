@@ -4,21 +4,26 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <select class="form-control" id="filtro-area" [(ngModel)]="filtroArea" (change)="aplicarFiltro()">
                 <option value="" selected>Todas las áreas</option>
                 <option *ngFor="let areaInt of listEventos">{{ areaInt.nombre }}</option>
               </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <select class="form-control" id="filtro-genero" [(ngModel)]="filtroGenero" (change)="aplicarFiltroAG()">
                 <option value="" selected>Todos los géneros</option>
                 <option value="H">Masculino</option>
                 <option value="M">Femenino</option>
               </select>
             </div>
+            <div class="col-md-4">
+              <input type="date" id="filtro-fecha" [(ngModel)]="filtroFecha" class="form-control" (change)="aplicarFiltroAF()">
+            </div>
           </div>
+          
         </div>
+
         <div class="card-body">
           <span class="titulo" >LISTADO DE PARTICIPANTES</span>
           <button class="btn btn-success float-end" routerLink="/añadir-participante">NUEVO</button>
@@ -57,3 +62,4 @@
     </div>
   </div>
 </div>
+

@@ -7,7 +7,7 @@ import { Producto } from '../models/producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  url = 'http://localhost:4000/api/productos/';
+  url = 'http://localhost:4000/api/productos';
   urlH = 'http://localhost:4000/api/productos/genero/H';
   urlM = 'http://localhost:4000/api/productos/genero/M';
 
@@ -48,5 +48,13 @@ export class ProductoService {
   getProductosByAreaYGenero(areaInt: string, genero: string): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.url}/areaInt/${areaInt}/genero/${genero}`);
   }
+
+  getProductosByAreaYFecha(areaInt: string, fechaCreacion: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.url}/areaInt/${areaInt}/fechaCreacion/${fechaCreacion}`);
+  }
+
+  getProductosByFecha(fechaCreacion: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.url}/fechaCreacion/${fechaCreacion}`);
+  } 
 
 }
