@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
 import { Evento } from 'src/app/models/evento';
 import { Producto } from 'src/app/models/producto';
 import { EventoService } from 'src/app/services/evento.service';
 import { ProductoService } from 'src/app/services/producto.service';
+
 
 @Component({
   selector: 'app-listar-productos',
@@ -25,11 +26,6 @@ export class ListarProductosComponent implements OnInit {
   eventoSeleccionado: string = '';
   fechaRegistro: Date= new Date;
 
-
-
-
-
-  
   constructor(private _productoService: ProductoService,
         private toastr: ToastrService,
         private _eventoService: EventoService
@@ -42,8 +38,8 @@ export class ListarProductosComponent implements OnInit {
     this.obtenerEventos();
     this.obtenerProductosH();
     this.obtenerProductosM();
+   
   }
-
 
   obtenerProductos() {
     this._productoService.getProductos().subscribe(data => {
@@ -94,7 +90,9 @@ export class ListarProductosComponent implements OnInit {
   
     aplicarFiltro(): void {
       if (this.filtroArea !== '') {
-        this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+        this._productoService.getProductosByArea(this.filtroArea).pipe(
+          map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+        ).subscribe((productos: Producto[]) => {
           this.listProductos = productos;
         });
       } else {
@@ -105,15 +103,21 @@ export class ListarProductosComponent implements OnInit {
 
   aplicarFiltroAG(): void {
     if (this.filtroArea !== '' && this.filtroGenero !== '') {
-      this._productoService.getProductosByAreaYGenero(this.filtroArea, this.filtroGenero).subscribe((productos: Producto[]) => {
+      this._productoService.getProductosByAreaYGenero(this.filtroArea,this.filtroGenero).pipe(
+        map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+      ).subscribe((productos: Producto[]) => {
         this.listProductos = productos;
       });
     } else if (this.filtroArea !== '') {
-      this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+      this._productoService.getProductosByArea(this.filtroArea).pipe(
+        map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+      ).subscribe((productos: Producto[]) => {
         this.listProductos = productos;
       });
     } else if (this.filtroGenero !== '') {
-      this._productoService.getProductosByGenero(this.filtroGenero).subscribe((productos: Producto[]) => {
+      this._productoService.getProductosByGenero(this.filtroGenero).pipe(
+        map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+      ).subscribe((productos: Producto[]) => {
         this.listProductos = productos;
       });
     } else {
@@ -123,15 +127,21 @@ export class ListarProductosComponent implements OnInit {
 
   aplicarFiltroAF(): void {
     if (this.filtroArea !== '' && this.filtroFecha !== '') {
-      this._productoService.getProductosByAreaYFecha(this.filtroArea, this.filtroFecha).subscribe((productos: Producto[]) => {
+      this._productoService.getProductosByAreaYFecha(this.filtroArea, this.filtroFecha).pipe(
+        map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+      ).subscribe(productos => {
         this.listProductos = productos;
       });
     } else if (this.filtroArea !== '') {
-      this._productoService.getProductosByArea(this.filtroArea).subscribe((productos: Producto[]) => {
+      this._productoService.getProductosByArea(this.filtroArea).pipe(
+        map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+      ).subscribe(productos => {
         this.listProductos = productos;
       });
     } else if (this.filtroFecha !== '') {
-      this._productoService.getProductosByFecha(this.filtroFecha).subscribe((productos: Producto[]) => {
+      this._productoService.getProductosByFecha(this.filtroFecha).pipe(
+        map(productos => productos.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+      ).subscribe(productos => {
         this.listProductos = productos;
       });
     } else {

@@ -17,5 +17,7 @@ export class Evento {
     actualizarCupo(cantidad: number) {
         this.cupo -= cantidad;
     }
+
+    
     
 }

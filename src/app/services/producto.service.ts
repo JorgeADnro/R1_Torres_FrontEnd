@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto';
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,7 @@ export class ProductoService {
     return this.http.get<Producto[]>(`${this.url}/genero/${genero}`);
   }  
 
+
   getProductosByAreaYGenero(areaInt: string, genero: string): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.url}/areaInt/${areaInt}/genero/${genero}`);
   }
@@ -55,6 +57,11 @@ export class ProductoService {
 
   getProductosByFecha(fechaCreacion: string): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.url}/fechaCreacion/${fechaCreacion}`);
-  } 
+  }
+
+  asignarEvento(idProducto: string, idEvento: string): Observable<any> {
+    const url = `${this.url}/${idProducto}/asignarEvento/${idEvento}`;
+    return this.http.put(url, {});
+  }
 
 }
